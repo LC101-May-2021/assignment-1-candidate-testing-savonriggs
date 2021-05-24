@@ -3,26 +3,33 @@ const input = require('readline-sync');
 // TODO 2: modify your quiz app to ask 5 questions //
 
 // TODO 1.1a: Define candidateName // 
-let candidateName;
+let candidateName = ("")
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
-let question;
-let correctAnswer;
-let candidateAnswer;
+let question = ("Who was the first American woman in space? ") ;
+let correctAnswer = ("Sally Ride");
+let candidateAnswer = ("");
 let questions;
 let correctAnswers;
 let candidateAnswers;
 
+console.log("");
 
-function askForName() {
+function askForName(candidateName = input.question("Please enter your name: "))  {console.log("");
+console.log("Welcome " + candidateName + ", this is a quiz to determine if you are an ideal candidate for our new astronaut training program.");
+console.log("");
   // TODO 1.1b: Ask for candidate's name //
 
 }
 
-function askQuestion() {
+function askQuestion(candidateAnswer = input.question(question)) {if (candidateAnswer === correctAnswer) 
+console.log("Correct") 
+else if (candidateAnswer !== correctAnswer)
+console.log("Incorrect")
+} 
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
 
 
-}
+
 
 function gradeQuiz(candidateAnswers) {
 
