@@ -8,33 +8,34 @@ let candidateName = ("")
 let question = ("Who was the first American woman in space? ") ;
 let correctAnswer = ("Sally Ride");
 let candidateAnswer = ("");
-let questions;
-let correctAnswers;
-let candidateAnswers;
+let questions = [];
+let correctAnswers = [];
+let candidateAnswers = [];
 
-console.log("");
 
-function askForName(candidateName = input.question("Please enter your name: "))  {console.log("");
-console.log("Welcome " + candidateName + ", this is a quiz to determine if you are an ideal candidate for our new astronaut training program.");
-console.log("");
+function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-
+candidateName = input.question("Please enter your name: ");
+console.log(`Welcome ${candidateName} `)
 }
 
-function askQuestion(candidateAnswer = input.question(question)) {if (candidateAnswer === correctAnswer) 
-console.log("Correct") 
-else if (candidateAnswer !== correctAnswer)
-console.log("Incorrect")
-} 
+function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-
+  candidateAnswer = input.question(question) 
+}
 
 
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-
+if (candidateAnswer === correctAnswer) {
+  console.log("Correct")
+}else if  (candidateAnswer === correctAnswer){
+  candidateAnswers.push(candidateAnswer)
+}else {
+  console.log("Incorrect")
+}
 
   let grade;
   
@@ -45,11 +46,10 @@ function gradeQuiz(candidateAnswers) {
 function runProgram() {
   askForName();
   // TODO 1.1c: Ask for candidate's name //
-  
+  nameOther = input.question("Please enter your name: ")
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
-
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
 module.exports = {
