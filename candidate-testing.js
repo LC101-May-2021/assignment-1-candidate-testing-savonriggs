@@ -8,9 +8,10 @@ let candidateName = ("")
 let question = "Who was the first American woman in space? " ;
 let correctAnswer = "Sally Ride";
 let candidateAnswer = ("");
-let questions = [];
-let correctAnswers = [];
+let questions = ["Who was the first American woman in space? ", "True or False: 5 Kilometers == 5000 Meters ", "(5 + 3)/2 * 10 = ? ", "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ", "What is the minimum crew size for the ISS?	"];
+let correctAnswers = ["Sally Ride", "True", "40", "Trajectory", "3"];
 let candidateAnswers = [];
+let correctScore = 0
 
 
 function askForName() {
@@ -20,26 +21,44 @@ candidateName = input.question("Please enter your name: ");
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  candidateAnswer = input.question(question) 
-}
+  for (let i = 0;i<questions.length;i++){
+    candidateAnswer = input.question(questions[i])
+  console.log(`Your answer: ${candidateAnswer} \nCorrect Answer:${correctAnswers[i]}`)
+  candidateAnswers.push(candidateAnswer)
+
+  }
+
+    
+  }  
+
 
 
 
 function gradeQuiz(candidateAnswers) {
-
+let correctScore = 0
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-if (candidateAnswer === correctAnswer) {
-  console.log("Correct")
-}else if  (candidateAnswer === correctAnswer){
-  candidateAnswers.push(candidateAnswer)
-}else {
-  console.log("Incorrect")
+  //console.log(candidateAnswers)
+  for (let i = 0;i<candidateAnswers.length;i++) {
+    
+if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+  correctScore++
 }
 
-  let grade;
+  }
+
+
+
+
+  let grade = (correctScore/5*100);
+  if (grade >= 80){
+    console.log(`>>> Overall Grade: ${grade} (${correctScore} of 5 responses correct) <<<\n>>> Status: Passed <<<`)
+  } else if (grade < 80){
+console.log(`>>> Overall Grade: ${grade} (${correctScore} of 5 responses correct) <<<\n>>> Status: Failed <<<`)
+  }
   
 
   return grade;
+
 }
 
 function runProgram() {
